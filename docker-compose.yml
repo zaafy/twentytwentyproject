@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+
+  ttp_wordpress:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html
+    environment:
+      - TTP_DB_NAME=${TTP_DB_NAME}
+      - TTP_DB_USER=${TTP_DB_USER}
+      - TTP_DB_PASSWORD=${TTP_DB_PASSWORD}
+      - TTP_DB_HOST=${TTP_DB_HOST}
+      - TTP_AUTH_KEY=${TTP_AUTH_KEY}
+      - TTP_SECURE_AUTH_KEY=${TTP_SECURE_AUTH_KEY}
+      - TTP_LOGGED_IN_KEY=${TTP_LOGGED_IN_KEY}
+      - TTP_NONCE_KEY=${TTP_NONCE_KEY}
+      - TTP_AUTH_SALT=${TTP_AUTH_SALT}
+      - TTP_SECURE_AUTH_SALT=${TTP_SECURE_AUTH_SALT}
+      - TTP_LOGGED_IN_SALT=${TTP_LOGGED_IN_SALT}
+      - TTP_NONCE_SALT=${TTP_NONCE_SALT}
+      - TTP_WP_HOME=${TTP_WP_HOME}
+      - TTP_WP_SITEURL=${TTP_WP_SITEURL}
+      - TTP_COOKIE_DOMAIN=${TTP_COOKIE_DOMAIN}
+      - TTP_WP_DEBUG=${TTP_WP_DEBUG}
+
+  ttp_db:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: ${TTP_DB_PASSWORD}
+    volumes:
+      - ttp_db:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  ttp_adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+volumes:
+  ttp_wordpress:
+  ttp_db:
