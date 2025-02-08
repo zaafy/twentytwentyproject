@@ -6,7 +6,7 @@ if (!function_exists('ttp_load_scripts')) {
         wp_enqueue_script(
             'ttp-script',
             get_stylesheet_directory_uri() . '/assets/js/scripts.js',
-            array('jquery'),
+            array('jquery', 'wp-util'), // WP Util is used to make a call with AJAX
             filemtime(get_stylesheet_directory() . '/assets/js/scripts.js'), // I also added caching issues solution: the version is always the time of last file edit.
             array('strategy'  => 'defer')
         );

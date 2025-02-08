@@ -15,3 +15,6 @@ require get_stylesheet_directory() . '/inc/book-genre-taxonomy-archive-paginatio
 
 // TASK 5
 require get_stylesheet_directory() . '/inc/shortcodes.php';
+
+// TASK 6
+require get_stylesheet_directory() . '/inc/books-data.php';
