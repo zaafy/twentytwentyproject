@@ -1,4 +1,5 @@
 <?php
+// START TASK 6
 add_action( 'wp_ajax_nopriv_get_books_data', 'ttp_get_books_data' );
 add_action( 'wp_ajax_get_books_data', 'ttp_get_books_data' );
 
@@ -41,3 +42,4 @@ if (!function_exists('ttp_get_books_data')) {
         }
     }
 }
+// END TASK 6
